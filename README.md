@@ -5,9 +5,10 @@ data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=rea
 
 How to run:
 
-1. Download test data and import into a Postgres database.
-2. Update database connection in `application.yaml`.
-3. Start the server and
+1. Requires Java 21 to build and run.
+2. Download test data and import into a Postgres database.
+3. Update database connection in `application.yaml`.
+4. Start the server and
    use [Swagger UI](http://localhost:8080/swagger-ui/index.html) to run query.
 
 Sample query:
