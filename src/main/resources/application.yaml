@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: text-to-sql
+  threading:
+    virtual:
+      enabled: true
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+  datasource:
+    url: jdbc:postgresql://localhost:5432/netflix
+    username: postgres
+    password: postgres
