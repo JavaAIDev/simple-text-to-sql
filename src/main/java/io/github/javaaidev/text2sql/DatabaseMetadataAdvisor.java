@@ -4,6 +4,8 @@ import io.github.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;
 import org.springframework.ai.chat.client.advisor.api.AdvisedResponse;
 import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisor;
@@ -23,10 +25,24 @@ public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
       """;
 
   private final DatabaseMetadataHelper databaseMetadataHelper;
+  private final String tableSchemas;
+  private static final Logger LOGGER = LoggerFactory.getLogger(
+      DatabaseMetadataAdvisor.class);
 
   public DatabaseMetadataAdvisor(
       DatabaseMetadataHelper databaseMetadataHelper) {
     this.databaseMetadataHelper = databaseMetadataHelper;
+    this.tableSchemas = getDatabaseMetadata();
+    LOGGER.info("Loaded database metadata: {}", this.tableSchemas);
+  }
+
+  private String getDatabaseMetadata() {
+    try {
+      return databaseMetadataHelper.extractMetadataJson();
+    } catch (SQLException e) {
+      LOGGER.error("Failed to load database metadata", e);
+      throw new RuntimeException(e);
+    }
   }
 
   @Override
@@ -34,12 +50,6 @@ public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
       CallAroundAdvisorChain chain) {
     var systemParams = Optional.ofNullable(advisedRequest.systemParams())
         .orElseGet(HashMap::new);
-    var tableSchemas = "";
-    try {
-      tableSchemas = databaseMetadataHelper.extractMetadataJson();
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
     systemParams.put("table_schemas", tableSchemas);
     var request = AdvisedRequest.from(advisedRequest)
         .withSystemText(DEFAULT_SYSTEM_TEXT)
