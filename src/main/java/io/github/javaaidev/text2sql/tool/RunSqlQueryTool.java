@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.util.CollectionUtils;
 
+/**
+ * Use {@linkplain JdbcClient} to run SQL query and output result in CSV format
+ */
 public class RunSqlQueryTool implements
     Function<RunSqlQueryRequest, RunSqlQueryResponse> {
 

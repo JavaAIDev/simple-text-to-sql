@@ -1,8 +1,7 @@
 # Simple Text to SQL (No RAG)
 
-Test data:
-
-[Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
+Test
+data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
 
 How to run:
 

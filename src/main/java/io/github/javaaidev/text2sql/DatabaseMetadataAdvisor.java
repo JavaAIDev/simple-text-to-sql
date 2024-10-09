@@ -10,6 +10,9 @@ import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisor;
 import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisorChain;
 import org.springframework.core.Ordered;
 
+/**
+ * Advisor to update system text of the prompt
+ */
 public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
 
   private static final String DEFAULT_SYSTEM_TEXT = """
