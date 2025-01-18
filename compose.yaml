@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+      - type: bind
+        source: sample-db-scripts
+        target: /docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+volumes:
+  postgresql-data:

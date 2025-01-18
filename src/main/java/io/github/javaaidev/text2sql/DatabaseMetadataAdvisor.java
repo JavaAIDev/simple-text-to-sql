@@ -48,12 +48,11 @@ public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
   @Override
   public AdvisedResponse aroundCall(AdvisedRequest advisedRequest,
       CallAroundAdvisorChain chain) {
-    var systemParams = Optional.ofNullable(advisedRequest.systemParams())
-        .orElseGet(HashMap::new);
+    var systemParams = new HashMap<>(advisedRequest.systemParams());
     systemParams.put("table_schemas", tableSchemas);
     var request = AdvisedRequest.from(advisedRequest)
-        .withSystemText(DEFAULT_SYSTEM_TEXT)
-        .withSystemParams(systemParams)
+        .systemText(DEFAULT_SYSTEM_TEXT)
+        .systemParams(systemParams)
         .build();
     return chain.nextAroundCall(request);
   }

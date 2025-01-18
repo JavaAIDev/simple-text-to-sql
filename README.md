@@ -1,15 +1,12 @@
 # Simple Text to SQL (No RAG)
 
-Test
-data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
+Test data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
 
 How to run:
 
 1. Requires Java 21 to build and run.
-2. Download test data and import into a Postgres database.
-3. Update database connection in `application.yaml`.
-4. Start the server and
-   use [Swagger UI](http://localhost:8080/swagger-ui/index.html) to run query.
+2. Start Postgres database using Docker Compose.
+3. Start the server and use [Swagger UI](http://localhost:8080/swagger-ui/index.html) to run query.
 
 Sample query:
 
@@ -22,3 +19,7 @@ Output:
 ```text
 There are 2,058 movies produced in the United States.
 ```
+
+## Full Text-to-SQL Implementation
+
+For a complete Text-to-SQL implementation, check out my [course](https://www.udemy.com/course/spring-ai-text-to-sql/?referralCode=6180D9A02FA8BA9D4F60).

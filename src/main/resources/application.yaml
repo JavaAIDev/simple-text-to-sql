@@ -8,6 +8,6 @@ spring:
     openai:
       api-key: ${OPENAI_API_KEY:}
   datasource:
-    url: jdbc:postgresql://localhost:5432/netflix
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
