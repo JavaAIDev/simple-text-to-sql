@@ -1,4 +1,4 @@
-package io.github.javaaidev.text2sql.tool;
+package com.javaaidev.text2sql.tool;
 
 import java.util.Map;
 import java.util.Objects;

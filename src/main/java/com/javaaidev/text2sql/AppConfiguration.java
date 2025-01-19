@@ -1,8 +1,8 @@
-package io.github.javaaidev.text2sql;
+package com.javaaidev.text2sql;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
-import io.github.javaaidev.text2sql.tool.RunSqlQueryTool;
+import com.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
+import com.javaaidev.text2sql.tool.RunSqlQueryTool;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

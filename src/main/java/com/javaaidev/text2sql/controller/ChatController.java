@@ -1,6 +1,6 @@
-package io.github.javaaidev.text2sql.controller;
+package com.javaaidev.text2sql.controller;
 
-import io.github.javaaidev.text2sql.DatabaseMetadataAdvisor;
+import com.javaaidev.text2sql.DatabaseMetadataAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi.ChatModel;

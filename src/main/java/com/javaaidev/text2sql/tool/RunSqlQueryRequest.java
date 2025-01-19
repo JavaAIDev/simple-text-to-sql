@@ -1,4 +1,4 @@
-package io.github.javaaidev.text2sql.tool;
+package com.javaaidev.text2sql.tool;
 
 /**
  * Request to run SQL query

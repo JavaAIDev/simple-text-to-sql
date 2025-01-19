@@ -1,4 +1,4 @@
-package io.github.javaaidev.text2sql;
+package com.javaaidev.text2sql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

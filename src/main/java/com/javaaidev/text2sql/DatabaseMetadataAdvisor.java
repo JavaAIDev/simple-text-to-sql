@@ -1,9 +1,8 @@
-package io.github.javaaidev.text2sql;
+package com.javaaidev.text2sql;
 
-import io.github.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
+import com.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;

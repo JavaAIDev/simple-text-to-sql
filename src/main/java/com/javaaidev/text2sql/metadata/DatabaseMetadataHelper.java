@@ -1,4 +1,4 @@
-package io.github.javaaidev.text2sql.metadata;
+package com.javaaidev.text2sql.metadata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
