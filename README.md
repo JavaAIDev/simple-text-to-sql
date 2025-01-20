@@ -1,5 +1,7 @@
 # Simple Text to SQL (No RAG)
 
+> See JavaAIDev [article](https://javaaidev.com/docs/rag/samples/text-to-sql) for more details.
+
 Test data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
 
 How to run:
@@ -11,7 +13,7 @@ How to run:
 Sample query:
 
 ```text
-how many movies are produced in United States?
+how many movies are produced in the United States?
 ```
 
 Output:
