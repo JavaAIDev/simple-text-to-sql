@@ -10,9 +10,9 @@
     <relativePath/>
   </parent>
 
-  <groupId>io.github.javaaidev</groupId>
+  <groupId>com.javaaidev</groupId>
   <artifactId>simple-text-to-sql</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>Simple Text to SQL</name>
 
   <properties>
