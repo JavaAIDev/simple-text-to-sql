@@ -1,5 +1,7 @@
 # Simple Text to SQL (No RAG)
 
+[![build](https://github.com/JavaAIDev/simple-text-to-sql/actions/workflows/build.yaml/badge.svg)](https://github.com/JavaAIDev/simple-text-to-sql/actions/workflows/build.yaml)
+
 > See JavaAIDev [article](https://javaaidev.com/docs/rag/samples/text-to-sql) for more details.
 
 Test data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
