@@ -44,8 +44,8 @@ public class RunSqlQueryTool implements
     var builder = new StringBuilder();
     builder.append(String.join(", ", fields));
     for (Map<String, Object> row : rows) {
-      var rowString = fields.stream().map(row::get).filter(Objects::nonNull)
-          .map(Object::toString)
+      var rowString = fields.stream().map(row::get)
+          .map(value -> Objects.toString(value, "") )
           .collect(Collectors.joining(", "));
       builder.append(rowString);
     }
