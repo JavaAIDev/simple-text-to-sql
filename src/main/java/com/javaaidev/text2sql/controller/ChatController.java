@@ -23,9 +23,9 @@ public class ChatController {
     return new ChatResponse(
         chatClient.prompt().user(request.input())
             .options(OpenAiChatOptions.builder()
-                .withModel(ChatModel.GPT_3_5_TURBO)
-                .withTemperature(0.0)
-                .withFunction("runSqlQuery")
+                .model(ChatModel.GPT_4_O_MINI)
+                .temperature(0.0)
+                .function("runSqlQuery")
                 .build())
             .call().content());
   }
