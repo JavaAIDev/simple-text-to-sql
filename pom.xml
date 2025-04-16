@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.3.4</version>
+    <version>3.4.4</version>
     <relativePath/>
   </parent>
 
@@ -18,7 +18,9 @@
   <properties>
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring-ai.version>1.0.0-M5</spring-ai.version>
+    <spring-ai.version>1.0.0-M6</spring-ai.version>
+    <chat-agent-ui.version>0.11.0</chat-agent-ui.version>
+    <llm-agent-spec.version>0.1.2</llm-agent-spec.version>
   </properties>
 
   <dependencyManagement>
@@ -69,6 +71,16 @@
       <version>1.12.0</version>
     </dependency>
     <dependency>
+      <groupId>com.javaaidev.chatagentui</groupId>
+      <artifactId>chat-agent-ui</artifactId>
+      <version>${chat-agent-ui.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.javaaidev.llmagentspec</groupId>
+      <artifactId>spring-ai-adapter</artifactId>
+      <version>${llm-agent-spec.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
@@ -98,15 +110,5 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-    <repository>
-      <id>spring-snapshots</id>
-      <name>Spring Snapshots</name>
-      <url>https://repo.spring.io/snapshot</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </repository>
   </repositories>
-
-
 </project>

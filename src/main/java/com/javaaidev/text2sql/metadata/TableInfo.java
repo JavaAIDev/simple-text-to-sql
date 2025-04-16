@@ -2,7 +2,11 @@ package com.javaaidev.text2sql.metadata;
 
 import java.util.List;
 
-public record TableInfo(String name, String description, String catalog,
-                        String schema, List<ColumnInfo> columns) {
+public record TableInfo(
+    String name,
+    String description,
+    String catalog,
+    String schema,
+    List<ColumnInfo> columns) {
 
 }

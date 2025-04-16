@@ -2,11 +2,8 @@ package com.javaaidev.text2sql.tool;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -37,7 +34,7 @@ public class RunSqlQueryTool implements
     }
   }
 
-  private String runQuery(String query) {
+  private String runQuery(String query) throws IOException {
     var rows = jdbcClient.sql(query)
         .query().listOfRows();
     if (CollectionUtils.isEmpty(rows)) {
@@ -51,11 +48,7 @@ public class RunSqlQueryTool implements
         .build();
     var builder = new StringBuilder();
     for (Map<String, Object> row : rows) {
-      try {
-        printer.printRecord(builder, fields.stream().map(row::get).toArray());
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+      printer.printRecord(builder, fields.stream().map(row::get).toArray());
     }
     return builder.toString();
   }

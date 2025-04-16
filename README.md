@@ -10,19 +10,23 @@ How to run:
 
 1. Requires Java 21 to build and run.
 2. Start Postgres database using Docker Compose.
-3. Start the server and use [Swagger UI](http://localhost:8080/swagger-ui/index.html) to run query.
+3. Start the server and use [Chat Agent UI](http://localhost:8080/webjars/chat-agent-ui/index.html) to run query.
 
 Sample query:
 
 ```text
-how many movies are produced in the United States?
+How many movies were produced in the United States?
 ```
 
 Output:
 
 ```text
-There are 2,058 movies produced in the United States.
+The total number of movies produced in the United States is 2058.
 ```
+
+See the screenshot below.
+
+![Chat Agent UI](simple-text-to-sql-ui.png)
 
 ## Full Text-to-SQL Implementation
 

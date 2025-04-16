@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;
 import org.springframework.ai.chat.client.advisor.api.AdvisedResponse;
+import org.springframework.ai.chat.client.advisor.api.BaseAdvisor;
 import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisor;
 import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisorChain;
 import org.springframework.core.Ordered;
@@ -14,7 +15,7 @@ import org.springframework.core.Ordered;
 /**
  * Advisor to update system text of the prompt
  */
-public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
+public class DatabaseMetadataAdvisor implements BaseAdvisor {
 
   private static final String DEFAULT_SYSTEM_TEXT = """
       You are a Postgres expert. Please help to generate a Postgres query, then run the query to answer the question. The output should be in tabular format.
@@ -45,15 +46,18 @@ public class DatabaseMetadataAdvisor implements CallAroundAdvisor {
   }
 
   @Override
-  public AdvisedResponse aroundCall(AdvisedRequest advisedRequest,
-      CallAroundAdvisorChain chain) {
+  public AdvisedRequest before(AdvisedRequest advisedRequest) {
     var systemParams = new HashMap<>(advisedRequest.systemParams());
     systemParams.put("table_schemas", tableSchemas);
-    var request = AdvisedRequest.from(advisedRequest)
+    return AdvisedRequest.from(advisedRequest)
         .systemText(DEFAULT_SYSTEM_TEXT)
         .systemParams(systemParams)
         .build();
-    return chain.nextAroundCall(request);
+  }
+
+  @Override
+  public AdvisedResponse after(AdvisedResponse advisedResponse) {
+    return advisedResponse;
   }
 
   @Override
