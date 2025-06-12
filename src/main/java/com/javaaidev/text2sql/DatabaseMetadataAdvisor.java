@@ -2,14 +2,14 @@ package com.javaaidev.text2sql;
 
 import com.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ai.chat.client.advisor.api.AdvisedRequest;
-import org.springframework.ai.chat.client.advisor.api.AdvisedResponse;
+import org.springframework.ai.chat.client.ChatClientRequest;
+import org.springframework.ai.chat.client.ChatClientResponse;
+import org.springframework.ai.chat.client.advisor.api.AdvisorChain;
 import org.springframework.ai.chat.client.advisor.api.BaseAdvisor;
-import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisor;
-import org.springframework.ai.chat.client.advisor.api.CallAroundAdvisorChain;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.core.Ordered;
 
 /**
@@ -46,18 +46,18 @@ public class DatabaseMetadataAdvisor implements BaseAdvisor {
   }
 
   @Override
-  public AdvisedRequest before(AdvisedRequest advisedRequest) {
-    var systemParams = new HashMap<>(advisedRequest.systemParams());
-    systemParams.put("table_schemas", tableSchemas);
-    return AdvisedRequest.from(advisedRequest)
-        .systemText(DEFAULT_SYSTEM_TEXT)
-        .systemParams(systemParams)
-        .build();
+  public ChatClientRequest before(ChatClientRequest chatClientRequest, AdvisorChain advisorChain) {
+    var systemText = new PromptTemplate(DEFAULT_SYSTEM_TEXT).render(Map.of(
+        "table_schemas", tableSchemas
+    ));
+    return chatClientRequest.mutate()
+        .prompt(chatClientRequest.prompt().augmentSystemMessage(systemText)).build();
   }
 
   @Override
-  public AdvisedResponse after(AdvisedResponse advisedResponse) {
-    return advisedResponse;
+  public ChatClientResponse after(ChatClientResponse chatClientResponse,
+      AdvisorChain advisorChain) {
+    return chatClientResponse;
   }
 
   @Override

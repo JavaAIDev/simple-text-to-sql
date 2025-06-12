@@ -27,7 +27,7 @@ public class ChatController {
     return ModelAdapter.toStreamingResponse(
         chatClient.prompt()
             .messages(ModelAdapter.fromRequest(request).toArray(new Message[0]))
-            .tools("runSqlQuery")
+            .toolNames("runSqlQuery")
             .stream()
             .chatResponse());
   }
