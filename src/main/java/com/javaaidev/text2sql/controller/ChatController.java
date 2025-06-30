@@ -23,10 +23,12 @@ public class ChatController {
   }
 
   @PostMapping("/chat")
-  public Flux<ServerSentEvent<ChatAgentResponse>> chat(@RequestBody ChatAgentRequest request) {
+  public Flux<ServerSentEvent<ChatAgentResponse>> chat(
+      @RequestBody ChatAgentRequest request) {
     return ModelAdapter.toStreamingResponse(
         chatClient.prompt()
-            .messages(ModelAdapter.fromRequest(request).toArray(new Message[0]))
+            .messages(
+                ModelAdapter.fromRequest(request).toArray(new Message[0]))
             .toolNames("runSqlQuery")
             .stream()
             .chatResponse());

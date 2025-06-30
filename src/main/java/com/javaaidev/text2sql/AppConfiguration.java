@@ -13,7 +13,8 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 public class AppConfiguration {
 
   @Bean
-  public DatabaseMetadataHelper databaseMetadataHelper(DataSource dataSource,
+  public DatabaseMetadataHelper databaseMetadataHelper(
+      DataSource dataSource,
       ObjectMapper objectMapper) {
     return new DatabaseMetadataHelper(dataSource, objectMapper);
   }

@@ -46,12 +46,15 @@ public class DatabaseMetadataAdvisor implements BaseAdvisor {
   }
 
   @Override
-  public ChatClientRequest before(ChatClientRequest chatClientRequest, AdvisorChain advisorChain) {
+  public ChatClientRequest before(ChatClientRequest chatClientRequest,
+      AdvisorChain advisorChain) {
     var systemText = new PromptTemplate(DEFAULT_SYSTEM_TEXT).render(Map.of(
         "table_schemas", tableSchemas
     ));
     return chatClientRequest.mutate()
-        .prompt(chatClientRequest.prompt().augmentSystemMessage(systemText)).build();
+        .prompt(
+            chatClientRequest.prompt().augmentSystemMessage(systemText))
+        .build();
   }
 
   @Override
