@@ -93,6 +93,7 @@
   </dependencies>
 
   <build>
+    <finalName>text-to-sql</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
