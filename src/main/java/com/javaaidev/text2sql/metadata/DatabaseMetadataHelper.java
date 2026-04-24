@@ -1,11 +1,11 @@
 package com.javaaidev.text2sql.metadata;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.sql.DataSource;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 public class DatabaseMetadataHelper {
 
@@ -22,7 +22,7 @@ public class DatabaseMetadataHelper {
     var metadata = extractMetadata();
     try {
       return objectMapper.writeValueAsString(metadata);
-    } catch (JsonProcessingException e) {
+    } catch (JacksonException e) {
       return Objects.toString(metadata);
     }
   }

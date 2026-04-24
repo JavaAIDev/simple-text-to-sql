@@ -1,6 +1,5 @@
 package com.javaaidev.text2sql;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
 import com.javaaidev.text2sql.tool.RunSqlQueryTool;
 import javax.sql.DataSource;
@@ -8,6 +7,7 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import tools.jackson.databind.ObjectMapper;
 
 @Configuration
 public class AppConfiguration {
