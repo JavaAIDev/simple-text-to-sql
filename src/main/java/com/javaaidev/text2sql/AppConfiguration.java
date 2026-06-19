@@ -1,9 +1,12 @@
 package com.javaaidev.text2sql;
 
 import com.javaaidev.text2sql.metadata.DatabaseMetadataHelper;
+import com.javaaidev.text2sql.tool.RunSqlQueryRequest;
+import com.javaaidev.text2sql.tool.RunSqlQueryResponse;
 import com.javaaidev.text2sql.tool.RunSqlQueryTool;
 import javax.sql.DataSource;
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.function.FunctionToolCallback;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -31,8 +34,15 @@ public class AppConfiguration {
   }
 
   @Bean
-  @Tool(name = "runSqlQuery", description = "Query database using SQL")
   public RunSqlQueryTool runSqlQuery(JdbcClient jdbcClient) {
     return new RunSqlQueryTool(jdbcClient);
+  }
+
+  @Bean
+  public FunctionToolCallback<RunSqlQueryRequest, RunSqlQueryResponse> runSqlQueryToolCallback(RunSqlQueryTool runSqlQueryTool) {
+    return FunctionToolCallback.builder("runSqlQuery", runSqlQueryTool)
+        .description("Query database using SQL")
+        .inputType(RunSqlQueryRequest.class)
+        .build();
   }
 }
