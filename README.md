@@ -2,6 +2,9 @@
 
 [![build](https://github.com/JavaAIDev/simple-text-to-sql/actions/workflows/build.yaml/badge.svg)](https://github.com/JavaAIDev/simple-text-to-sql/actions/workflows/build.yaml)
 
+> [!CAUTION]
+> Code moved to [JavaAIDev/hands-on-spring-ai](https://github.com/JavaAIDev/hands-on-spring-ai)
+
 > See JavaAIDev [article](https://javaaidev.com/docs/rag/samples/text-to-sql) for more details.
 
 Test data: [Netflix data](https://github.com/neondatabase/postgres-sample-dbs?tab=readme-ov-file#netflix-data)
